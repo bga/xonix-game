@@ -1,3 +1,5 @@
+https://bga.github.io/xonix-game/
+
 Simple Web browser Xonix game clone\
 Enjoy!
 
