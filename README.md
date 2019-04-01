@@ -1,2 +1,2 @@
-Simple Web browser Xonix game clone
+Simple Web browser Xonix game clone\
 Enjoy!
