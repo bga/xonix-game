@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Xonix</title>
+		<meta charset="utf-8" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        background-color: #ccc;
+      }
+      #c {
+        display: block;
+        /*
+        width: 1120px;
+        height: 640px;
+        */
+        position: absolute;
+       	top:0;
+       	bottom: 0;
+       	left: 0;
+       	right: 0;
+         	
+       	margin: auto;
+      }
+      .github-source {
+        display: block;
+        position: fixed;
+        left: 3px;
+        bottom: 3px;
+        font: 10pt bold fixed;
+        z-index: 10;
+        text-transform: uppercase;
+      }
+    </style>
+    <meta name="keywords" content="Xonix, web, browser, javascript, game">
+    <meta  name="description"  content="Xonix web browser game">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png">
+  </head>
+	<body>
+		<canvas id="c"></canvas>
+		<script>
+			var b = document.body;
+			var c = document.getElementsByTagName('canvas')[0];
+			c.width = 70 * 16
+			c.height = 40 * 16
+      var a = c.getContext('2d');
+
+      document.body.clientWidth; // fix bug in webkit: http://qfox.nl/weblog/218
+		</script>
+    <!--
+    <script type="text/javascript" src="main.js"> </script> 
+    <script type="text/javascript" src="a.compress3.js"> </script> 
+    -->
+    <div class=github-source><a href="https://github.com/bga/xonix-game/">GitHub repo</a></div>
+    <script type="text/javascript" src="a.js"> </script> 
+	</body>
+</html>
