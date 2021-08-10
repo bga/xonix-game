@@ -24,6 +24,8 @@ const CELL_COLOR = "#888"
 var t = null
 d = null
 
+var isPause = false;
+
 //# units registry
 var registry = [
   //# empty
@@ -177,6 +179,15 @@ for(i = 0; 9 > ++i;) {
 }
 //setInterval(s, 1e4)
 onkeydown = function(p, c) {
+  if(!p.ctrlKey && !p.shiftKey && !p.altKey && p.which == 80 /* P */) {
+    isPause = !isPause;
+    if(isPause) {
+      clearTimeout(loopThreadId);
+    }
+    else {
+      loopThreadId = setTimeout(loop, 0);
+    }
+  };
   c = p.which - 37
   if(c >= 0 && c < 4) {
     d = [(c & 2) - 1, 0]
@@ -186,6 +197,7 @@ onkeydown = function(p, c) {
   }
 }
 
+var loopThreadId = null;
 
 var loop = function(p, c) {
   if(livesCount & (0+ DEATH_BLINKS_COUNT - 1 +0)) {
@@ -197,7 +209,7 @@ var loop = function(p, c) {
         a.fillRect(N * p[0], p[1] * N, N, N)
       }
     }
-    --livesCount ? setTimeout(loop, 500) : g(1)
+    --livesCount ? (loopThreadId = setTimeout(loop, 500)) : g(1)
   }
   else {
     //# move
@@ -225,7 +237,7 @@ var loop = function(p, c) {
     if(1) a.fillText("".concat("lvl#", level, " ", livesCount / DEATH_BLINKS_COUNT, "❤ ", 0 | (Date.now() - startTime) / 1000, "⏰ ",  filledCellsCountPercent, "/", 50 + level * 5, "%"), 4, (0+ H * N - 4 +0))
   
     if(filledCellsCountPercent >= 50 + level * 5) return g(level + 1)
-    setTimeout(loop, 1000 / (15 + 2 * level))
+    loopThreadId = setTimeout(loop, 1000 / (15 + 2 * level))
   }
 }
 
